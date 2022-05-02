@@ -13,22 +13,37 @@ class Services
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $typeService;
+    #[ORM\Column(type: 'string', length: 100)]
+    private $nomService;
+
+    #[ORM\Column(type: 'integer')]
+    private $coutService;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTypeService(): ?string
+    public function getNomService(): ?string
     {
-        return $this->typeService;
+        return $this->nomService;
     }
 
-    public function setTypeService(string $typeService): self
+    public function setNomService(string $nomService): self
     {
-        $this->typeService = $typeService;
+        $this->nomService = $nomService;
+
+        return $this;
+    }
+
+    public function getCoutService(): ?int
+    {
+        return $this->coutService;
+    }
+
+    public function setCoutService(int $coutService): self
+    {
+        $this->coutService = $coutService;
 
         return $this;
     }

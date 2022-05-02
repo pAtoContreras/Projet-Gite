@@ -13,17 +13,20 @@ class Proprietaire
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 50)]
     private $nomProprietaire;
 
-    #[ORM\Column(type: 'decimal', precision: 10, scale: '0')]
+    #[ORM\Column(type: 'string', length: 10)]
     private $telProprietaire;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $mailProprietaire;
 
-    #[ORM\Column(type: 'boolean', nullable: true)]
-    private $dispoProprietaire;
+    #[ORM\Column(type: 'string', length: 100)]
+    private $horairesDisponibilites;
+
+    #[ORM\OneToOne(mappedBy: 'idProprietaire', targetEntity: Gite::class, cascade: ['persist', 'remove'])]
+    private $gite;
 
     public function getId(): ?int
     {
@@ -66,14 +69,31 @@ class Proprietaire
         return $this;
     }
 
-    public function getDispoProprietaire(): ?bool
+    public function getHorairesDisponibilites(): ?string
     {
-        return $this->dispoProprietaire;
+        return $this->horairesDisponibilites;
     }
 
-    public function setDispoProprietaire(?bool $dispoProprietaire): self
+    public function setHorairesDisponibilites(string $horairesDisponibilites): self
     {
-        $this->dispoProprietaire = $dispoProprietaire;
+        $this->horairesDisponibilites = $horairesDisponibilites;
+
+        return $this;
+    }
+
+    public function getGite(): ?Gite
+    {
+        return $this->gite;
+    }
+
+    public function setGite(Gite $gite): self
+    {
+        // set the owning side of the relation if necessary
+        if ($gite->getIdProprietaire() !== $this) {
+            $gite->setIdProprietaire($this);
+        }
+
+        $this->gite = $gite;
 
         return $this;
     }

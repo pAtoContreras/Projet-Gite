@@ -13,29 +13,39 @@ class Gite
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 100)]
     private $region;
 
-    #[ORM\Column(type: 'decimal', precision: 5, scale: '0')]
+    #[ORM\Column(type: 'string', length: 100)]
     private $departement;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 100)]
     private $ville;
+
+    #[ORM\Column(type: 'string', length: 5)]
+    private $codePostal;
 
     #[ORM\Column(type: 'integer')]
     private $surface;
 
     #[ORM\Column(type: 'integer')]
-    private $nbrChambre;
+    private $nbChambres;
 
     #[ORM\Column(type: 'integer')]
-    private $nbrCouchage;
+    private $nbCouchage;
 
     #[ORM\Column(type: 'integer')]
-    private $tarifJour;
+    private $tarifJourBS;
 
-    #[ORM\Column(type: 'boolean', nullable: true)]
-    private $animaux;
+    #[ORM\Column(type: 'integer')]
+    private $tarifJourHS;
+
+    #[ORM\Column(type: 'integer')]
+    private $prixAnimaux;
+
+    #[ORM\OneToOne(inversedBy: 'gite', targetEntity: Proprietaire::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private $idProprietaire;
 
     public function getId(): ?int
     {
@@ -78,6 +88,18 @@ class Gite
         return $this;
     }
 
+    public function getCodePostal(): ?string
+    {
+        return $this->codePostal;
+    }
+
+    public function setCodePostal(string $codePostal): self
+    {
+        $this->codePostal = $codePostal;
+
+        return $this;
+    }
+
     public function getSurface(): ?int
     {
         return $this->surface;
@@ -90,50 +112,74 @@ class Gite
         return $this;
     }
 
-    public function getNbrChambre(): ?int
+    public function getNbChambres(): ?int
     {
-        return $this->nbrChambre;
+        return $this->nbChambres;
     }
 
-    public function setNbrChambre(int $nbrChambre): self
+    public function setNbChambres(int $nbChambres): self
     {
-        $this->nbrChambre = $nbrChambre;
+        $this->nbChambres = $nbChambres;
 
         return $this;
     }
 
-    public function getNbrCouchage(): ?int
+    public function getNbCouchage(): ?int
     {
-        return $this->nbrCouchage;
+        return $this->nbCouchage;
     }
 
-    public function setNbrCouchage(int $nbrCouchage): self
+    public function setNbCouchage(int $nbCouchage): self
     {
-        $this->nbrCouchage = $nbrCouchage;
+        $this->nbCouchage = $nbCouchage;
 
         return $this;
     }
 
-    public function getTarifJour(): ?int
+    public function getTarifJourBS(): ?int
     {
-        return $this->tarifJour;
+        return $this->tarifJourBS;
     }
 
-    public function setTarifJour(int $tarifJour): self
+    public function setTarifJourBS(int $tarifJourBS): self
     {
-        $this->tarifJour = $tarifJour;
+        $this->tarifJourBS = $tarifJourBS;
 
         return $this;
     }
 
-    public function getAnimaux(): ?bool
+    public function getTarifJourHS(): ?int
     {
-        return $this->animaux;
+        return $this->tarifJourHS;
     }
 
-    public function setAnimaux(?bool $animaux): self
+    public function setTarifJourHS(int $tarifJourHS): self
     {
-        $this->animaux = $animaux;
+        $this->tarifJourHS = $tarifJourHS;
+
+        return $this;
+    }
+
+    public function getPrixAnimaux(): ?int
+    {
+        return $this->prixAnimaux;
+    }
+
+    public function setPrixAnimaux(int $prixAnimaux): self
+    {
+        $this->prixAnimaux = $prixAnimaux;
+
+        return $this;
+    }
+
+    public function getIdProprietaire(): ?Proprietaire
+    {
+        return $this->idProprietaire;
+    }
+
+    public function setIdProprietaire(Proprietaire $idProprietaire): self
+    {
+        $this->idProprietaire = $idProprietaire;
 
         return $this;
     }
