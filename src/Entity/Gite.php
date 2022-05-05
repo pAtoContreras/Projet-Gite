@@ -22,7 +22,7 @@ class Gite
     #[ORM\Column(type: 'string', length: 100)]
     private $ville;
 
-    #[ORM\Column(type: 'string', length: 5)]
+    #[ORM\Column(type: 'string', length: 10)]
     private $codePostal;
 
     #[ORM\Column(type: 'integer')]
@@ -46,6 +46,12 @@ class Gite
     #[ORM\OneToOne(inversedBy: 'gite', targetEntity: Proprietaire::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private $idProprietaire;
+
+    #[ORM\Column(type: 'string', length: 180)]
+    private $adresse;
+
+    #[ORM\Column(type: 'array', nullable: true)]
+    private $arrayImages = [];
 
     public function getId(): ?int
     {
@@ -180,6 +186,30 @@ class Gite
     public function setIdProprietaire(Proprietaire $idProprietaire): self
     {
         $this->idProprietaire = $idProprietaire;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getArrayImages(): ?array
+    {
+        return $this->arrayImages;
+    }
+
+    public function setArrayImages(?array $arrayImages): self
+    {
+        $this->arrayImages = $arrayImages;
 
         return $this;
     }
