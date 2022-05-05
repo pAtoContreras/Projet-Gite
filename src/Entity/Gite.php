@@ -21,6 +21,9 @@ class Gite
 
     #[ORM\Column(type: 'string', length: 100)]
     private $ville;
+    
+    #[ORM\Column(type: 'string', length: 100)]
+    private $adresse;
 
     #[ORM\Column(type: 'string', length: 5)]
     private $codePostal;
@@ -87,6 +90,18 @@ class Gite
 
         return $this;
     }
+    public function getAdresse(): ?string
+    {
+        return $this->$adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
 
     public function getCodePostal(): ?string
     {
