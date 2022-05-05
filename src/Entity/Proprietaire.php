@@ -16,7 +16,7 @@ class Proprietaire
     #[ORM\Column(type: 'string', length: 50)]
     private $nomProprietaire;
 
-    #[ORM\Column(type: 'string', length: 10)]
+    #[ORM\Column(type: 'string', length: 20)]
     private $telProprietaire;
 
     #[ORM\Column(type: 'string', length: 255)]

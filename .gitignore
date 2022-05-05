@@ -1,5 +1,6 @@
 
 ###> symfony/framework-bundle ###
+.env
 /.env
 /.env.local
 /.env.local.php
@@ -23,3 +24,4 @@
 ###> php-version ###
 /.php-version
 .php-version
+
