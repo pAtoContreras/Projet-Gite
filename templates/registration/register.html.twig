@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Register{% endblock %}
 
 {% block body %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="index.html">Gite.</a>
+                    <a class="navbar-brand" href="accueil">Gite.</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -19,32 +19,43 @@
                     </div>
                 </div>
             </nav>
-            <br><br>
+         
+ <section class="vh-100" style="background-color: #508bfc;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <h3 class="mb-5">Sign in</h3>
+              {{ form_start(registrationForm) }}
+            <div class="form-outline mb-4">
+              {{ form_row(registrationForm.email) }}
+            </div>
             
-<div class="container">
+            <div class="form-outline mb-4">
+               {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+            </div>
 
-<form name="registration_form" method="post">
+            <!-- Checkbox -->
+            <div class="form-check d-flex justify-content-start mb-4">
+              {{ form_row(registrationForm.agreeTerms) }}
 
-    <div >
-        <label for="registration_form_email" class="form-label" type="email" >Email</label>
-        <input type="text" id="registration_form_email" class="form-control"name="registration_form[email]" required="required" placeholder="Email" maxlength="180" style="height: 50px; width: 300px;">
+            </div>
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+               {{ form_end(registrationForm) }}
+            <hr class="my-4">
+
+         
+
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div>      
-        <label for="registration_form_plainPassword" class="form-label">Password</label>
-        <input type="password" id="registration_form_plainPassword" class="form-control"type="email" name="registration_form[plainPassword]" required="required" placeholder="Password" autocomplete="new-password"style="height: 50px; width: 300px;">
-    </div><br>
-
-    <div>
-        <label for="registration_form_agreeTerms" class="required">Agree terms</label>
-        <input type="checkbox" id="registration_form_agreeTerms" name="registration_form[agreeTerms]" required="required" value="1">
-    </div><br><br>
-
-    <button type="submit" class="btn btn-success">Register</button>
-
-<input type="hidden" id="registration_form__token" name="registration_form[_token]" value="70507.hNQr-LKVRtRoKYKCySmHnVjM4ZoDXVBUDXO-ul8PTR4.wYJOn-HlHp8bS8bbp3PQri2asKNZMSABSkX50x5LenT8oGii4OQprF0Ezw"></form>
-</div>
- 
-
-
+  </div>
+</section>
+   
 {% endblock %}
