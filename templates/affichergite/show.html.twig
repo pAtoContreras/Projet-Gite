@@ -3,66 +3,89 @@
 {% block title %}Gite{% endblock %}
 
 {% block body %}
-    <h1>Gite</h1>
+   
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ gite.id }}</td>
-            </tr>
-            <tr>
-                <th>Region</th>
-                <td>{{ gite.region }}</td>
-            </tr>
-            <tr>
-                <th>Departement</th>
-                <td>{{ gite.departement }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ gite.ville }}</td>
-            </tr>
-            <tr>
-                <th>CodePostal</th>
-                <td>{{ gite.codePostal }}</td>
-            </tr>
-            <tr>
-                <th>Surface</th>
-                <td>{{ gite.surface }}</td>
-            </tr>
-            <tr>
-                <th>NbChambres</th>
-                <td>{{ gite.nbChambres }}</td>
-            </tr>
-            <tr>
-                <th>NbCouchage</th>
-                <td>{{ gite.nbCouchage }}</td>
-            </tr>
-            <tr>
-                <th>TarifJourBS</th>
-                <td>{{ gite.tarifJourBS }}</td>
-            </tr>
-            <tr>
-                <th>TarifJourHS</th>
-                <td>{{ gite.tarifJourHS }}</td>
-            </tr>
-            <tr>
-                <th>PrixAnimaux</th>
-                <td>{{ gite.prixAnimaux }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ gite.adresse }}</td>
-            </tr>
-            <tr>
-                <th>ArrayImages</th>
-                <td>{{ gite.arrayImages ? gite.arrayImages|join(', ') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+<main class="container">
+  <div class="p-2 p-md-3 mb-4 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-6 fst-italic">GITE n°{{ gite.id }}</h1>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-5">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0">{{ gite.surface}} m²</h3> <br>
+          <strong class="d-inline-block mb-2 text-primary">"Un magifique petit coin de verdure"</strong>
+            <p class="mb-auto">{{ gite.adresse }}</p>
+            <p class="mb-auto">{{ gite.ville }} ({{ gite.codePostal }})</p>
+            <p class="mb-auto">{{ gite.departement }} (région:{{ gite.region }})</p><br>
+            <p>- {{ gite.nbChambres }} Chambres</p>
+            <p>- {{ gite.nbCouchage }} Couchage</p>
+            <h5 class="mb-0">Tarifs:</h5> <br>
+            <p>Basse saison: {{ gite.tarifJourBS }} €/jour</p>
+            <p>Haute saison: {{ gite.tarifJourHS }} €/jour</p>
+            <h5 class="mb-0">Animaux</h5> <br>
+            <p>- {{ gite.prixAnimaux }} €/jour et par animal</p>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+        </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h4 class="mb-0">ÉQUIPEMENTS</h4> <br>
+          <h6 class="mb-0">INTÉRIEURS:</h4> <br>
+          <p class="mb-auto">à remplir</p>
+          <h6 class="mb-0">EXTÉRIEURS:</h6> <br>
+          <p class="mb-auto">à remplir</p>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="http://satyr.dev/250x530" class="card-img-top" alt="..." style="width:100%;">
+        </div>
+      </div>
+    </div>
+    {# IMAGES #}
+    {# {{ gite.arrayImages ? gite.arrayImages|join(', ') : '' }} #}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+           <img src="http://satyr.dev/250x180" class="card-img-top" alt="..." style="width:100%;">
+            <div class="card-body">
+              <p class="card-text">Vue n° 1</p>
+              <div class="d-flex justify-content-between align-items-center">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+           <img src="http://satyr.dev/250x180" class="card-img-top" alt="..." style="width:100%;">
+            <div class="card-body">
+              <p class="card-text">Vue n° 2</p>
+              <div class="d-flex justify-content-between align-items-center">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+           <img src="http://satyr.dev/250x180" class="card-img-top" alt="..." style="width:100%;">
+            <div class="card-body">
+              <p class="card-text">Vue n° 3</p>
+              <div class="d-flex justify-content-between align-items-center">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-b w-100 btn-primary">Retour</button>
+        </div>
+  </div>    
+
 
     <a href="{{ path('app_affichergite_index') }}">Retour</a>
-
+    </main>
     {{ include('affichergite/_delete_form.html.twig') }}
 {% endblock %}
