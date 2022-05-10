@@ -75,4 +75,16 @@ class GiteRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findGiteByDep($dep) 
+    {
+        $qb = $this->createQueryBuilder('d')
+            ->where('d.departement = :dep')
+            ->setParameter('dep', $dep);
+
+            $query = $qb->getQuery();
+
+            return $query->execute();
+
+    }
 }

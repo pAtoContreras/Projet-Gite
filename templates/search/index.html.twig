@@ -1,7 +1,7 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SearchController!{% endblock %}
+{% block title %}Rechercher{% endblock %}
 
 
 {% block body %}
@@ -18,7 +18,7 @@
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="accueil">Accueil</a></li>
                             <li class="nav-item"><a class="nav-link" href="services">Services</a></li>
-                            <li class="nav-item"><a class="nav-link" href="equipements">Equipements</a></li>
+                            <li class="nav-item"><a class="nav-link" href="search">Rechercher</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>&nbsp;&nbsp;&nbsp;
                             <li class="nav-item"><a class="nav-link"  href="login"><button class="btn btn-primary">Connexion</button></a></li>
                             <li class="nav-item"><a class="nav-link"  href="register"><button class="btn btn-danger">S'inscrire</button></a></li>
@@ -41,8 +41,9 @@
                                 {% form_theme form 'bootstrap_3_layout.html.twig' %}
                                 {# {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %} #}
                                 {{ form_start(form) }}
-                                    <p>{{ form_row(form.departement) }}</p>
-                                    <p>{{ form_row(form.ville) }}</p>
+                                    <p>{{ form_row(form.departement, {'attr' : {'placeholder' : "Entrez un département"}}) }}</p>
+                                    {{ form_errors(form.departement) }}
+                                    <p>{{ form_row(form.ville, {'attr' : {'placeholder' : "Entrez une ville"}}) }}</p>
                                     <p>{{ form_row(form.distance) }}</p>
                                     <p>{{ form_row(form.date) }}</p>
                                     <h4>Équipements intérieurs</h4>
@@ -56,13 +57,16 @@
                                     <p>{{ form_row(form.piscinePrivee) }}</p> 
                                     <p>{{ form_row(form.piscinePartagee) }}</p> 
                                     <p>{{ form_row(form.tennis) }}</p> 
-                                    <p>{{ form_row(form.pingpong) }}</p> 
+                                    <p>{{ form_row(form.pingPong) }}</p> 
                                     <p>{{ form_row(form.locationLinge) }}</p> 
                                     <p>{{ form_row(form.menage) }}</p> 
                                     <p>{{ form_row(form.accesInternet) }}</p>
                                     {{ form_rest(form) }}
                                     <button type="submit">Rechercher</button>
+                                    
+                                    
                                 {{ form_end(form) }}
+                                
                             </div>
                         </div>
                     </div>  

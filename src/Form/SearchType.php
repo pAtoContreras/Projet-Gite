@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controller\ContactController;
+use Symfony\Component\Form\FormError;
 
 class SearchType extends AbstractType
 {
@@ -24,14 +25,19 @@ class SearchType extends AbstractType
         /* le builder va construire le formlaire*/
         $builder
             ->add('departement', TextType::class, array(
-                'attr' => array('class' => 'Département')),
+                'required' => false,
+                'attr' => array('class' => 'Département',
+                )),
                 
             )
             ->add('ville', TextType::class, array(
+                'required' => false,
                 'attr' => array('class' => 'Ville'))
+                
 
             )
             ->add('distance', RangeType::class, array(
+                'required' => false,
                 'attr' => array('min' => 0,
                                 'max' => 50))
             )
@@ -84,7 +90,7 @@ class SearchType extends AbstractType
                 'required' => false,
                 ]
             )
-            ->add('pingpong', CheckboxType::class, [
+            ->add('pingPong', CheckboxType::class, [
                 'label' => 'ping-pong',
                 'required' => false,
                 ]
