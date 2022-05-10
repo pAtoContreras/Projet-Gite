@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gite{% endblock %}
+
+{% block body %}
+    <h1>Gite</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gite.id }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ gite.region }}</td>
+            </tr>
+            <tr>
+                <th>Departement</th>
+                <td>{{ gite.departement }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ gite.ville }}</td>
+            </tr>
+            <tr>
+                <th>CodePostal</th>
+                <td>{{ gite.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Surface</th>
+                <td>{{ gite.surface }}</td>
+            </tr>
+            <tr>
+                <th>NbChambres</th>
+                <td>{{ gite.nbChambres }}</td>
+            </tr>
+            <tr>
+                <th>NbCouchage</th>
+                <td>{{ gite.nbCouchage }}</td>
+            </tr>
+            <tr>
+                <th>TarifJourBS</th>
+                <td>{{ gite.tarifJourBS }}</td>
+            </tr>
+            <tr>
+                <th>TarifJourHS</th>
+                <td>{{ gite.tarifJourHS }}</td>
+            </tr>
+            <tr>
+                <th>PrixAnimaux</th>
+                <td>{{ gite.prixAnimaux }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ gite.adresse }}</td>
+            </tr>
+            <tr>
+                <th>ArrayImages</th>
+                <td>{{ gite.arrayImages ? gite.arrayImages|join(', ') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_affichergite_index') }}">back to list</a>
+
+    <a href="{{ path('app_affichergite_edit', {'id': gite.id}) }}">edit</a>
+
+    {{ include('affichergite/_delete_form.html.twig') }}
+{% endblock %}
