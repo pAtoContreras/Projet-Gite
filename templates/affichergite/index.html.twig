@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gite index{% endblock %}
+
+{% block body %}
+    <h1>Gite index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Region</th>
+                <th>Departement</th>
+                <th>Ville</th>
+                <th>CodePostal</th>
+                <th>Surface</th>
+                <th>NbChambres</th>
+                <th>NbCouchage</th>
+                <th>TarifJourBS</th>
+                <th>TarifJourHS</th>
+                <th>PrixAnimaux</th>
+                <th>Adresse</th>
+                <th>ArrayImages</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gite in gites %}
+            <tr>
+                <td>{{ gite.id }}</td>
+                <td>{{ gite.region }}</td>
+                <td>{{ gite.departement }}</td>
+                <td>{{ gite.ville }}</td>
+                <td>{{ gite.codePostal }}</td>
+                <td>{{ gite.surface }}</td>
+                <td>{{ gite.nbChambres }}</td>
+                <td>{{ gite.nbCouchage }}</td>
+                <td>{{ gite.tarifJourBS }}</td>
+                <td>{{ gite.tarifJourHS }}</td>
+                <td>{{ gite.prixAnimaux }}</td>
+                <td>{{ gite.adresse }}</td>
+                <td>{{ gite.arrayImages ? gite.arrayImages|join(', ') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_affichergite_show', {'id': gite.id}) }}">show</a>
+                    <a href="{{ path('app_affichergite_edit', {'id': gite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_affichergite_new') }}">Create new</a>
+{% endblock %}
