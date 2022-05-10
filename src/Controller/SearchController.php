@@ -90,6 +90,8 @@ class SearchController extends AbstractController
             if($form->get('accesInternet')->getData() !== null) {
                 $accesInternet = $form->get('accesInternet')->getData();
             }
+
+            return $this->redirectToRoute('app_affichergite_by_dep', ['departement' => $departement]);
             
         }
 

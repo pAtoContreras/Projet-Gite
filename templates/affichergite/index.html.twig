@@ -41,17 +41,14 @@
                 <td>{{ gite.adresse }}</td>
                 <td>{{ gite.arrayImages ? gite.arrayImages|join(', ') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_affichergite_show', {'id': gite.id}) }}">show</a>
-                    <a href="{{ path('app_affichergite_edit', {'id': gite.id}) }}">edit</a>
+                    <a href="{{ path('app_affichergite_show', {'id': gite.id}) }}">Afficher</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="14">no records found</td>
+                <td colspan="14">Pas de gîte</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_affichergite_new') }}">Create new</a>
 {% endblock %}

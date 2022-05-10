@@ -75,4 +75,13 @@ class AffichergiteController extends AbstractController
 
         return $this->redirectToRoute('app_affichergite_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    // Ajout de la methode pour afficher les gîtes par département
+    #[Route('{departement}', name: 'app_affichergite_by_dep', methods: ['GET'])]
+    public function afficherGitesByDep(GiteRepository $giteRepository, $departement): Response
+    {
+        return $this->render('affichergite/index.html.twig', [
+            'gites' => $giteRepository->findBy(array('departement' => $departement)),
+        ]);
+    }
 }
