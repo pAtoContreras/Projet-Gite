@@ -84,4 +84,13 @@ class AffichergiteController extends AbstractController
             'gites' => $giteRepository->findBy(array('departement' => $departement)),
         ]);
     }
+
+    // Ajout de la methode pour afficher les gîtes par ville
+    #[Route('{ville}', name: 'app_affichergite_by_ville', methods: ['GET'])]
+    public function afficherGitesByVille(GiteRepository $giteRepository, $ville): Response
+    {
+        return $this->render('affichergite/index.html.twig', [
+            'gites' => $giteRepository->findBy(array('ville' => $ville)),
+        ]);
+    }
 }

@@ -87,4 +87,16 @@ class GiteRepository extends ServiceEntityRepository
             return $query->execute();
 
     }
+
+    public function findGiteByVille($ville) 
+    {
+        $qb = $this->createQueryBuilder('v')
+            ->where('v.ville = :ville')
+            ->setParameter('ville', $ville);
+
+            $query = $qb->getQuery();
+
+            return $query->execute();
+
+    }
 }

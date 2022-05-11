@@ -3,52 +3,82 @@
 {% block title %}Gite index{% endblock %}
 
 {% block body %}
-    <h1>Gite index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Region</th>
-                <th>Departement</th>
-                <th>Ville</th>
-                <th>CodePostal</th>
-                <th>Surface</th>
-                <th>NbChambres</th>
-                <th>NbCouchage</th>
-                <th>TarifJourBS</th>
-                <th>TarifJourHS</th>
-                <th>PrixAnimaux</th>
-                <th>Adresse</th>
-                <th>ArrayImages</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for gite in gites %}
-            <tr>
-                <td>{{ gite.id }}</td>
-                <td>{{ gite.region }}</td>
-                <td>{{ gite.departement }}</td>
-                <td>{{ gite.ville }}</td>
-                <td>{{ gite.codePostal }}</td>
-                <td>{{ gite.surface }}</td>
-                <td>{{ gite.nbChambres }}</td>
-                <td>{{ gite.nbCouchage }}</td>
-                <td>{{ gite.tarifJourBS }}</td>
-                <td>{{ gite.tarifJourHS }}</td>
-                <td>{{ gite.prixAnimaux }}</td>
-                <td>{{ gite.adresse }}</td>
-                <td>{{ gite.arrayImages ? gite.arrayImages|join(', ') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_affichergite_show', {'id': gite.id}) }}">Afficher</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="14">Pas de gîte</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="accueil">Gite.</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="accueil">Accueil</a></li>
+                            <li class="nav-item"><a class="nav-link" href="services">Services</a></li>
+                            <li class="nav-item"><a class="nav-link" href="search">Rechercher</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>&nbsp;&nbsp;&nbsp;
+                            <li class="nav-item"><a class="nav-link"  href="login"><button class="btn btn-primary">Connexion</button></a></li>
+                            <li class="nav-item"><a class="nav-link"  href="register"><button class="btn btn-danger">S'inscrire</button></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <br><br>
+
+
+    <section class="py-5">
+        <div class="container px-5">
+            <!-- Contact form-->
+            <div class="bg-light rounded-3 py-5 px-3 px-md-3 mb-3">
+                <div class="row gx-3 justify-content-center">
+                        <div class="col-lg-8 col-xl-6">
+                            <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <!--<th>Id</th>
+                                                    <th>Region</th>
+                                                    <th>Departement</th>
+                                                    <th>Ville</th>
+                                                    <th>CodePostal</th>
+                                                    <th>Surface</th>
+                                                    <th>NbChambres</th>
+                                                    <th>NbCouchage</th>
+                                                    <th>TarifJourBS</th>
+                                                    <th>TarifJourHS</th>
+                                                    <th>PrixAnimaux</th>
+                                                    <th>Adresse</th>
+                                                    <th>ArrayImages</th>
+                                                    <<th>actions</th>-->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for gite in gites %}
+                                            
+                                                <tr>
+                                                    <td>{{ gite.region }}</td>
+                                                    <td>{{ gite.departement }}</td>
+                                                    <td>{{ gite.ville }}</td>
+                                                    <!--<td>{{ gite.codePostal }}</td>
+                                                    <td>{{ gite.surface }}</td>
+                                                    <td>{{ gite.nbChambres }}</td>
+                                                    <td>{{ gite.nbCouchage }}</td>-->
+                                                    <td>{{ gite.tarifJourBS }}€ /nuit</td>
+                                                    <!--<td>{{ gite.tarifJourHS }}</td>
+                                                    <td>{{ gite.prixAnimaux }}</td>
+                                                    <td>{{ gite.adresse }}</td>
+                                                    <td>{{ gite.arrayImages ? gite.arrayImages|join(', ') : '' }}</td>-->
+                                                    <td>
+                                                        <a href="{{ path('app_affichergite_show', {'id': gite.id}) }}">Afficher</a>
+                                                    </td>
+                                                </tr>
+                                            {% else %}
+                                                <tr>
+                                                    <td colspan="14">Pas de gîte</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 {% endblock %}
