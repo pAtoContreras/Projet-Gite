@@ -45,27 +45,27 @@
                                     <!-- Name input-->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                        <label for="name">Full name</label>
-                                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                                        <label for="name">Entrez votre nom</label>
+                                        <div class="invalid-feedback" data-sb-feedback="name:required">Vous devez entrer un nom</div>
                                     </div>
                                     <!-- Email address input-->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                        <label for="email">Email address</label>
-                                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                        <label for="email">Adresse email</label>
+                                        <div class="invalid-feedback" data-sb-feedback="email:required">Vous devez entrer votre email</div>
+                                        <div class="invalid-feedback" data-sb-feedback="email:email">L'email n'est pas valide</div>
                                     </div>
                                     <!-- Phone number input-->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                        <label for="phone">Phone number</label>
-                                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                                        <label for="phone">Numéro de téléphone</label>
+                                        <div class="invalid-feedback" data-sb-feedback="phone:required">Vous devez entrer un numéro</div>
                                     </div>
                                     <!-- Message input-->
                                     <div class="form-floating mb-3">
                                         <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
                                         <label for="message">Message</label>
-                                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                                        <div class="invalid-feedback" data-sb-feedback="message:required">Vous devez écrire un message</div>
                                     </div>
                                     <!-- Submit success message-->
                                     <!---->
@@ -73,8 +73,8 @@
                                     <!-- has successfully submitted-->
                                     <div class="d-none" id="submitSuccessMessage">
                                         <div class="text-center mb-3">
-                                            <div class="fw-bolder">Form submission successful!</div>
-                                            To activate this form, sign up at
+                                            <div class="fw-bolder">Votre message à bien été envoyé</div>
+                                            Pour activer ce formulaire, conectez-vous à
                                             <br />
                                             <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                                         </div>
@@ -83,9 +83,9 @@
                                     <!---->
                                     <!-- This is what your users will see when there is-->
                                     <!-- an error submitting the form-->
-                                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erreur lors de l'envoi du message!</div></div>
                                     <!-- Submit Button-->
-                                    <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
+                                    <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Envoyer</button></div>
                                 </form>
                             </div>
                         </div>
@@ -94,29 +94,30 @@
                     <div class="row gx-5 row-cols-2 row-cols-lg-4 py-5">
                         <div class="col">
                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-chat-dots"></i></div>
-                            <div class="h5 mb-2">Chat with us</div>
-                            <p class="text-muted mb-0">Chat live with one of our support specialists.</p>
+                            <div class="h5 mb-2">Venez discuter avec nous</div>
+                            <p class="text-muted mb-0">Vous pouvez contacter notre support en direct.</p>
                         </div>
                         <div class="col">
                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-people"></i></div>
-                            <div class="h5">Ask the community</div>
-                            <p class="text-muted mb-0">Explore our community forums and communicate with other users.</p>
+                            <div class="h5">Demandez à la communauté</div>
+                            <p class="text-muted mb-0">Venez discuter avec d'autres utilisateurs.</p>
                         </div>
                         <div class="col">
                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-question-circle"></i></div>
-                            <div class="h5">Support center</div>
-                            <p class="text-muted mb-0">Browse FAQ's and support articles to find solutions.</p>
+                            <div class="h5">Centre de support technique</div>
+                            <p class="text-muted mb-0">Parcourez notre FAQ pour trouvez des solutions.</p>
                         </div>
                         <div class="col">
                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-telephone"></i></div>
-                            <div class="h5">Call us</div>
-                            <p class="text-muted mb-0">Call us during normal business hours at (555) 892-9403.</p>
+                            <div class="h5">Appellez-nous</div>
+                            <p class="text-muted mb-0">Vous pouvez nous joindre 7 jour sur 7 et 24 heure sur 24</p>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
         <!-- Footer-->
+        <!--
         <footer class="bg-dark py-4 mt-auto">
             <div class="container px-5">
                 <div class="row align-items-center justify-content-between flex-column flex-sm-row">
@@ -131,4 +132,5 @@
                 </div>
             </div>
         </footer>
+        -->
 {% endblock %}
