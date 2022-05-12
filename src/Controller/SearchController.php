@@ -18,8 +18,8 @@ class SearchController extends AbstractController
     {
         $departement = null;
         $ville = null;
-        $distance = null;
-        $date = null;
+        /*$distance = null;
+        $date = null;*/
         $laveVaisselle = null;
         $laveLinge = null;
         $climatisation = null;
@@ -45,12 +45,14 @@ class SearchController extends AbstractController
             if($form->get('ville')->getData() !== null) {
                 $ville = $form->get('ville')->getData();
             }
+            /*
             if($form->get('distance')->getData() !== null) {
                 $distance = $form->get('distance')->getData();
             }
+            
             if($form->get('date')->getData() !== null) {
                 $date = $form->get('date')->getData();
-            }
+            }*/
             if($form->get('laveVaisselle')->getData() !== null) {
                 $laveVaisselle = $form->get('laveVaisselle')->getData();
             }

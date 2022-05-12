@@ -36,12 +36,12 @@ class SearchType extends AbstractType
                 
 
             )
-            ->add('distance', RangeType::class, array(
-                'required' => false,
-                'attr' => array('min' => 0,
-                                'max' => 50))
-            )
-            ->add('date', DateType::class)
+            // ->add('distance', RangeType::class, array(
+            //     'required' => false,
+            //     'attr' => array('min' => 0,
+            //                     'max' => 50))
+            // )
+            // ->add('date', DateType::class)
             
 
             ->add('laveVaisselle', CheckboxType::class, [
