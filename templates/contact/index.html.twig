@@ -4,26 +4,10 @@
 
 {% block body %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container px-5">
-                    <a class="navbar-brand" href="accueil">Gite.</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="accueil">Accueil</a></li>
-                            <li class="nav-item"><a class="nav-link" href="services">Services</a></li>
-                            <li class="nav-item"><a class="nav-link" href="search">Rechercher</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>&nbsp;&nbsp;&nbsp;
-                            <li class="nav-item"><a class="nav-link"  href="login"><button class="btn btn-primary">Connexion</button></a></li>
-                            <li class="nav-item"><a class="nav-link"  href="register"><button class="btn btn-danger">S'inscrire</button></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <br><br>
+{{ include('layouts/partials/_nav.html.twig') }}
             
      <!-- Page content-->
-            <section class="py-5">
+            <section class="py-2">
                 <div class="container px-5">
                     <!-- Contact form-->
                     <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
@@ -116,21 +100,7 @@
                 </div>
             </section>
         </main>
-        <!-- Footer-->
-        <!--
-        <footer class="bg-dark py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2022</div></div>
-                    <div class="col-auto">
-                        <a class="link-light small" href="#!">Privacy</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">Terms</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">Contact</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        -->
+
+{{ include('layouts/partials/_footer.html.twig') }}
+
 {% endblock %}

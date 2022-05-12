@@ -1,11 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gite{% endblock %}
+
+
+{% block title %}Gite
+
+{% endblock %}
 
 {% block body %}
-   
+
+{{ include('layouts/partials/_nav.html.twig') }}
+
 <main class="container">
-  <div class="p-2 p-md-3 mb-4 text-white rounded bg-dark">
+  <div class="py-4 p-md-3 m-4 text-white rounded bg-info">
     <div class="col-md-6 px-0">
       <h1 class="display-6 fst-italic">GITE n°{{ gite.id }}</h1>
     </div>
@@ -82,6 +88,9 @@
         </a>
         </div>   
   </div>    
+
 </main>
-    {{ include('affichergite/_delete_form.html.twig') }}
-{% endblock %}
+
+{{ include('layouts/partials/_footer.html.twig') }}
+
+{% endblock %} 
