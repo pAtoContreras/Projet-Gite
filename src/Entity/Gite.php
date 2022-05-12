@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\GiteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GiteRepository::class)]
@@ -52,6 +54,14 @@ class Gite
 
     #[ORM\Column(type: 'array', nullable: true)]
     private $arrayImages = [];
+
+    #[ORM\OneToMany(mappedBy: 'gite', targetEntity: Comments::class, orphanRemoval: true)]
+    private $comments;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -210,6 +220,36 @@ class Gite
     public function setArrayImages(?array $arrayImages): self
     {
         $this->arrayImages = $arrayImages;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Comments>
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setGite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getGite() === $this) {
+                $comment->setGite(null);
+            }
+        }
 
         return $this;
     }
