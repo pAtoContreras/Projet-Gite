@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ckeditor4": "github:ckeditor/ckeditor4-releases#full/stable"
+  }
+}
