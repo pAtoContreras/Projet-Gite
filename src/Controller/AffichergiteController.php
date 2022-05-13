@@ -17,6 +17,8 @@ use Doctrine\DBAL\Types\DateImmutableType;
 use Doctrine\DBAL\Types\DateTimeImmutableType;
 use App\Repository\CommentsRepository;
 use App\Repository\CommentRepository;
+use App\Entity\Proprietaire;
+use App\Repository\ProprietaireRepository;
 
 // #[Route('/affichergite')]
 class AffichergiteController extends AbstractController
@@ -48,15 +50,19 @@ class AffichergiteController extends AbstractController
         ]);
     }
 
+    /**
+     * Fonction qui affiche le gite sélectionné
+     */
     #[Route('/affichergite:{id}', name: 'app_affichergite_show', methods: ['GET','POST'])]
-    public function show(Request $request, Gite $gite, CommentsRepository $commentRepository): Response
+    public function show(Request $request, Gite $gite, CommentsRepository $commentRepository, ProprietaireRepository $proprioRepository, Proprietaire $proprietaire): Response
     {
 
-        
-        // Partie commentaires
-        // On crée le commentaire vierge
+        // On créé unpropriétaire
+        // et on récupère le propriétaire du gîte
         $comment = new Comments();
-        
+        $proprietaire = $gite->getIdProprietaire();
+        $idProprio = $proprietaire->getId();
+        $proprietaire = $proprioRepository->find($idProprio);
 
         // On génère le formulaire
         $commentForm = $this->createForm(CommentsType::class, $comment);
@@ -65,32 +71,17 @@ class AffichergiteController extends AbstractController
         // Traitement du formulaire
         if($commentForm->isSubmitted() && $commentForm->isValid()) {
             
+            //Configuration du commentaire
             $comment->setCreatedAt(new \DateTimeImmutable());
             $comment->setGite($gite);
-            
-            // On récupère le contenu du champ parentid
-            //$parentid= $commentForm->get("parentid")->getData();
 
-            // On va chercher le commentaire correspondant
-            //$parent = $commentRepository->find($parentid);
-
-            // On définit le parent
-            //$comment->setParent($parent);
-
+            //Ajoute le commentaire en base de données
             $commentRepository->add($comment, true);
             $this->addFlash('message', 'Votre message à été envoyé');
 
         }
 
-        // Equipements (Interieur/Exterieur)
-
-        $allInt = array("Lave-vaisselle","Lave-linge","Climatisation","Télévision");
-        $allExt = array("Terasse","Barbecue","Piscine privée","Piscine collective","Tennis","Ping-pong");
-        $nbInt = rand(2,4)-1;
-        $nbExt = rand(2,6)-1;
-        shuffle($allInt);
-        shuffle($allExt);
-
+        // Description du gîte
         $descript = array(
             "Un petit coin de paradis, Enfin... jusqu'à l'arrivée de Patricio !",
             "La mer à 100 mètre, n'emportez votre maillot, c'est une plage nudiste !",
@@ -104,7 +95,16 @@ class AffichergiteController extends AbstractController
         );
         shuffle($descript);
 
+        // Equipements (Interieur/Exterieur)
+        $allInt = array("Lave-vaisselle","Lave-linge","Climatisation","Télévision");
+        $allExt = array("Terasse","Barbecue","Piscine privée","Piscine collective","Tennis","Ping-pong");
+        $nbInt = rand(2,4)-1;
+        $nbExt = rand(2,6)-1;
+        shuffle($allInt);
+        shuffle($allExt);
+        
         return $this->render('affichergite/show.html.twig', [
+            'proprietaire' => $proprietaire,
             'gite' => $gite,
             'commentForm' => $commentForm->createView(),
             'allInt' => $allInt,

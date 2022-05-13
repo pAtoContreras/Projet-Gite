@@ -20,7 +20,7 @@
     <div class="col-md-5">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-3 d-flex flex-column position-static">
-          <h3 class="mb-0">{{ gite.surface}} m²</h3> <br>
+          <h3 class="mb-0">Surface: {{ gite.surface}} m²</h3> <br>
           <strong class="d-inline-block mb-0 text-primary">{{ descript[0] }}</strong>
             <p class="mb-auto">{{ gite.adresse }}</p>
             <p class="mb-auto">{{ gite.ville }} ({{ gite.codePostal }})</p>
@@ -30,6 +30,11 @@
             <p class="text-primary">Basse saison: {{ gite.tarifJourBS }} €/jour - Haute saison: {{ gite.tarifJourHS }} €/jour</p>
             <h5 class="mb-1">Animaux</h5>
             <p class="text-primary">- {{ gite.prixAnimaux }} €/jour et par animal</p>
+            <h5 class="mb-1">Propriétaire</h5>
+            <p class="text-primary">{{ proprietaire.nomProprietaire }}</p>
+            <p class="text-primary">{{ proprietaire.telProprietaire }}</p>
+            <p class="text-primary">{{ proprietaire.mailProprietaire }}</p>
+            <p class="text-primary">Disponibilités de {{ proprietaire.horairesDisponibilites }}</p>
         </div>
         <div class="col-auto d-none d-lg-block">
         </div>
@@ -83,7 +88,7 @@
         </div>
         <div class="col">
           <div class="card shadow-sm">
-           <img src="https://loremflickr.com/320/240/castle" class="card-img-top" alt="..." style="width:100%;">
+           <img src="https://loremflickr.com/320/240/appartment" class="card-img-top" alt="..." style="width:100%;">
             <div class="card-body">
               <p class="card-text">Vue n° 3</p>
               <div class="d-flex justify-content-between align-items-center">
