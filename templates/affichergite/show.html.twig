@@ -9,6 +9,16 @@
 {% block body %}
 
 {{ include('layouts/partials/_nav.html.twig') }}
+<script>
+    require (["esri/config","esri/Map","esri/views/MapView"], 
+        function(esriConfig,Map,MapView)
+      {
+      esriConfig.apiKey = "AAPK1c1ca5018f294e6eb85e58b71da09619B6Zz0TmLBk_37IwLQXtF97pNn8oQI47VXtVjfwVhofxcJgr0PJB3PR60yRlYJbf-";//"YOUR-API-KEY";
+      let map1 = new Map({basemap:"arcgis-topographic"})
+      let mapview = new MapView({container: "carte", map: map1, center: [2.2505492158227987,48.82639566683736], zoom: 14});
+    })
+</script>
+
 
 <main class="container">
   <div class="py-4 p-md-3 m-4 text-white rounded bg-info">
@@ -36,6 +46,7 @@
             <p class="text-primary">{{ proprietaire.mailProprietaire }}</p>
             <p class="text-primary">Disponibilités de {{ proprietaire.horairesDisponibilites }}</p>
         </div>
+        
         <div class="col-auto d-none d-lg-block">
         </div>
         </div>
@@ -63,6 +74,7 @@
         </div>
       </div>
     </div>
+    <div id='carte' style='width:100%;height:100%'></div>
     {# IMAGES #}
     {# {{ gite.arrayImages ? gite.arrayImages|join(', ') : '' }} #}
     <div class="row ">
