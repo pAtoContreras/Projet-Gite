@@ -19,33 +19,42 @@
   <div class="row mb-2 px-5">
     <div class="col-md-5">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
+        <div class="col p-3 d-flex flex-column position-static">
           <h3 class="mb-0">{{ gite.surface}} m²</h3> <br>
-          <strong class="d-inline-block mb-0 text-primary">"Un magifique petit coin de verdure"</strong>
+          <strong class="d-inline-block mb-0 text-primary">{{ descript[0] }}</strong>
             <p class="mb-auto">{{ gite.adresse }}</p>
             <p class="mb-auto">{{ gite.ville }} ({{ gite.codePostal }})</p>
             <p class="mb-auto">{{ gite.departement }} (région:{{ gite.region }})</p>
-            <p class="mb-auto py-4">{{ gite.nbChambres }} Chambres et {{ gite.nbCouchage }} Couchage</p>
-            <h5 class="mb-0">Tarifs:</h5>
-            <p>Basse saison: {{ gite.tarifJourBS }} €/jour - Haute saison: {{ gite.tarifJourHS }} €/jour</p>
-            <h5 class="mb-0">Animaux</h5>
-            <p>- {{ gite.prixAnimaux }} €/jour et par animal</p>
+            <p class="mb-auto mt-0 py-3 text-primary font-weight-bold">{{ gite.nbChambres }} Chambres et {{ gite.nbCouchage }} Couchage</p>
+            <h5 class="mb-1">Tarifs:</h5>
+            <p class="text-primary">Basse saison: {{ gite.tarifJourBS }} €/jour - Haute saison: {{ gite.tarifJourHS }} €/jour</p>
+            <h5 class="mb-1">Animaux</h5>
+            <p class="text-primary">- {{ gite.prixAnimaux }} €/jour et par animal</p>
         </div>
         <div class="col-auto d-none d-lg-block">
         </div>
         </div>
     </div>
+
+
     <div class="col-md-7">
       <div class="mx-4 row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <h4 class="mb-0" >ÉQUIPEMENTS</h4> <br>
-          <h6 class="mb-0">INTÉRIEURS:</h4> <br>
-          <p class="mb-auto">à remplir</p>
-          <h6 class="mb-0">EXTÉRIEURS:</h6> <br>
-          <p class="mb-auto">à remplir</p>
+          <h4 class="mb-0" >ÉQUIPEMENTS</h4>
+          <h6 class="mb-2 mt-4">INTÉRIEURS:</h4> 
+
+           {% for i in 0..nbInt %} 
+           <p class="mb-auto text-primary">- {{ allInt[i] }}</p> 
+           {% endfor %} 
+
+          <h6 class="mb-2 mt-4">EXTÉRIEURS:</h6> 
+
+          {% for i in 0..nbExt %} 
+          <p class="mb-auto text-primary">- {{ allExt[i] }}</p> 
+          {% endfor %} 
         </div>
         <div class="col-auto d-none d-lg-block">
-          <img src="https://loremflickr.com/320/400/house" class="card-img-top" alt="..." style="width:100%;">
+          <img src="https://loremflickr.com/320/400/lodging" class="card-img-top" alt="..." style="width:100%;">
         </div>
       </div>
     </div>
@@ -74,7 +83,7 @@
         </div>
         <div class="col">
           <div class="card shadow-sm">
-           <img src="https://loremflickr.com/320/240/pool" class="card-img-top" alt="..." style="width:100%;">
+           <img src="https://loremflickr.com/320/240/castle" class="card-img-top" alt="..." style="width:100%;">
             <div class="card-body">
               <p class="card-text">Vue n° 3</p>
               <div class="d-flex justify-content-between align-items-center">
@@ -82,7 +91,7 @@
             </div>
           </div>
         </div>
-        <div class="grix xs2 sm3 gutter-0 card"></div>
+        <div class="col-md-12 my-4">
         <div class="col-md-12 my-4">
           <div class="col-xs2 col-sm3">
             <h2>Liste des commentaires</h2>
@@ -107,4 +116,3 @@
 {{ include('layouts/partials/_footer.html.twig') }}
 
 {% endblock %} 
-

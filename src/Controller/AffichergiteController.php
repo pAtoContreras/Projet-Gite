@@ -79,15 +79,39 @@ class AffichergiteController extends AbstractController
 
             $commentRepository->add($comment, true);
             $this->addFlash('message', 'Votre message à été envoyé');
-            return $this->render('affichergite/show.html.twig', [
-                 'gite' => $gite,
-                 'commentForm' => $commentForm->createView()
-            ]);
+
         }
+
+        // Equipements (Interieur/Exterieur)
+
+        $allInt = array("Lave-vaisselle","Lave-linge","Climatisation","Télévision");
+        $allExt = array("Terasse","Barbecue","Piscine privée","Piscine collective","Tennis","Ping-pong");
+        $nbInt = rand(2,4)-1;
+        $nbExt = rand(2,6)-1;
+        shuffle($allInt);
+        shuffle($allExt);
+
+        $descript = array(
+            "Un petit coin de paradis, Enfin... jusqu'à l'arrivée de Patricio !",
+            "La mer à 100 mètre, n'emportez votre maillot, c'est une plage nudiste !",
+            "Batisse du 18ème siècle en pierre, taillés à la main par Salsabila",
+            "Un magnifique petit coin de verdure, et 3 lapins apprivoisés en liberté",
+            "Un chalet Entre la Montagne de Lure, le Luberon, et une magnifique centrale nucléaire",
+            "Maison construite par le célèbre influenceur Mickael lorsqu'il avait 8 ans et demi",
+            "Si vous voulez connaitre la géolocalisation de ce gite, appelez Tétiana !",
+            "Attention ! Kalilou a mis la pagaille la dernière fois qu'il a loué ce gite !",
+            "C'était une très jolie maison... avant que les enfants de Naïma la détruisent !"
+        );
+        shuffle($descript);
 
         return $this->render('affichergite/show.html.twig', [
             'gite' => $gite,
-            'commentForm' => $commentForm->createView()
+            'commentForm' => $commentForm->createView(),
+            'allInt' => $allInt,
+            'allExt' => $allExt,
+            'nbInt' => $nbInt,
+            'nbExt' => $nbExt,
+            'descript' => $descript
         ]);
     }
 
