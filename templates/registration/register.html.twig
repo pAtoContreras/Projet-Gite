@@ -22,7 +22,7 @@
           </div>
 
           <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0">Or</p>
+            <p class="text-center fw-bold mx-3 mb-0"></p>
           </div>
 
           {{ form_start(registrationForm) }}
@@ -35,7 +35,7 @@
           <div class="form-outline mb-3">
                    <div class="form-outline mb-4">
                {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+            label: 'Mot de passe'
 
            }) }}
 
@@ -48,7 +48,7 @@
            
              {{ form_row(registrationForm.agreeTerms) }} 
             <button type="submit" class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Register
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">S'inscrire
             </button>
             {{ form_end(registrationForm) }}
           </div>
