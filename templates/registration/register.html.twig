@@ -19,45 +19,33 @@
         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
           class="img-fluid" alt="Sample image">
       </div>
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+      <div class="col-md-3 col-lg-3 col-xl-3">
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-           <h3 class="mb-5">S'inscrire</h3>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-facebook-f"></i>
-            </button>
+            <h3 class="mb-5">S'inscrire</h3>
+  
           </div>
 
-          <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0">Or</p>
-          </div>
-
+        
+          <div class="row">
           {{ form_start(registrationForm) }}
           <!-- Email input -->
-          <div class="form-outline mb-4">
-           {{ form_row(registrationForm.email) }}
-          </div>
+            <div class="form-outline mb-4">
+                {{ form_row(registrationForm.email) }}
+            </div>
 
-          <!-- Password input -->
-          <div class="form-outline mb-3">
-                   <div class="form-outline mb-4">
-               {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-
-           }) }}
-
-    
-          <div class="form-check d-flex justify-content-start mb-4">
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                {{ form_row(registrationForm.plainPassword, {label: 'Mot de passe'}) }}
+            </div>
+            
         
           </div>
 
-           <div class="text-center text-lg-start mt-4 pt-2">
-           
-             {{ form_row(registrationForm.agreeTerms) }} 
-            <button type="submit" class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Register
-            </button>
-            {{ form_end(registrationForm) }}
-          </div>
+            <div class="col-xs-12">
+              {{ form_row(registrationForm.agreeTerms) }} 
+                <button type="submit" class="btn btn-primary btn-lg"style="padding-left: 2.5rem; padding-right: 2.5rem;">S'inscrire</button>
+              {{ form_end(registrationForm) }}
+            </div>
             
      
       </div>
